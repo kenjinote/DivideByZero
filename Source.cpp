@@ -7,7 +7,11 @@
 
 TCHAR szClassName[] = TEXT("Window");
 
-int getzero(){ return 0; }
+void dividebyzero()
+{
+	int n = (int)sin(0.0);
+	wsprintf(0, TEXT("%d"), 1 / n); // ó·äOî≠ê∂!
+}
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -27,8 +31,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		{
 			__try
 			{
-				int n = (int)sin(0.0);
-				wsprintf(szText, TEXT("%d"), 1 / n); // ó·äOî≠ê∂!
+				dividebyzero();
 			}
 			__except (EXCEPTION_EXECUTE_HANDLER)
 			{
@@ -42,8 +45,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 		else if (LOWORD(wParam) == 101)
 		{
-			int n = (int)sin(0.0);
-			wsprintf(szText, TEXT("%d"), 1 / n); // ó·äOî≠ê∂!
+			dividebyzero();
 		}
 		break;
 	case WM_DESTROY:
